@@ -30,6 +30,7 @@ export default class PigPen extends React.Component {
       this.audio.play()
     const newState = {environment: vibe}
     this.setState(newState)
+    console.log("i am in the pigpen parent")
   }
 
   generateSheeple = () => {
@@ -43,7 +44,8 @@ export default class PigPen extends React.Component {
     return(
       <div id="pig-pen">
         {sheeple}
-        <GalaxySNote7 environment={null} alterEnvironment={null} />
+        {/* passing callback to galaxy so that we can get data from child */}
+        <GalaxySNote7 environment={this.relax} alterEnvironment={this.alterEnvironment} />
       </div>
     )
   }

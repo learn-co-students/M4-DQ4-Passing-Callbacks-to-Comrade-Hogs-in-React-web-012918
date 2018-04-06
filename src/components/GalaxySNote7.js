@@ -19,15 +19,35 @@ export default class GalaxySNote7 extends React.Component {
   }
 
   throwAFit = () => {
+
+    //called to refresh?
+    // this.relax()
+    setTimeout(this.relax(), 2000)
   }
 
+  //attempt to do the 2 second refresh
   relax = () => {
+    console.log('checking relax is called')
+    setTimeout(this.props.environment(), 2000)
+    this.setState({
+      panicked: false
+    })
+    // setTimeout(this.props.alterEnvironment('docile'), 2000)
   }
 
   exclaim = () => {
+    //added cb to change pigpen environment
+    this.props.alterEnvironment('inhospitable')
+    //added set state to change panicked to true
+    this.setState({
+      panicked: true
+    })
+
     if (this.state.panicked) return
     this.exclaimAudio.play()
     this.squeelAudio.play()
+
+
   }
 
   panic = () => (<img id="galaxy-exclamation" className="exclamation" src={exclamation} alt="" />)
